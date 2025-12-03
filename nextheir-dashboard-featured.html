@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextHeir - Digital Legacy Preservation | Element United</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #FAF8F3;
+            color: #3E3E3E;
+        }
+
+        .sans {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #E8E3D8;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            background: #E8FF00;
+            border-radius: 6px;
+        }
+
+        h1 {
+            color: #3E3E3E;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: #5A5A5A;
+        }
+
+        .nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: #5A5A5A;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .nav-btn:hover {
+            background: #F5F3EE;
+        }
+
+        .nav-btn.active {
+            background: #D4AF37;
+            color: white;
+        }
+
+        /* FEATURED LEGACY HERO */
+        .featured-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+        }
+
+        .featured-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .featured-image img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .featured-text {
+            color: white;
+        }
+
+        .featured-label {
+            display: inline-block;
+            background: #D4AF37;
+            color: #1a1a1a;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .featured-subtitle {
+            font-size: 1.25rem;
+            color: #D4AF37;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .featured-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .meta-item {
+            text-align: left;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #D4AF37;
+            font-size: 0.875rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .featured-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* REST OF PAGE */
+        .role-bar {
+            background: white;
+            border-bottom: 1px solid #E8E3D8;
+            padding: 0.75rem 2rem;
+        }
+
+        .role-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .role-label {
+            color: #5A5A5A;
+            font-size: 0.875rem;
+        }
+
+        .role-btn {
+            padding: 0.375rem 1rem;
+            border: none;
+            border-radius: 20px;
+            background: #F5F3EE;
+            color: #5A5A5A;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .role-btn:hover {
+            background: #E8E3D8;
+        }
+
+        .role-btn.active {
+            background: #D4AF37;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #E8E3D8;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .metric-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #5A5A5A;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #3E3E3E;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #3E3E3E;
+        }
+
+        .primary-btn {
+            padding: 0.625rem 1.25rem;
+            background: #D4AF37;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: opacity 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .primary-btn:hover {
+            opacity: 0.9;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .heirloom-card {
+            background: white;
+            border: 1px solid #E8E3D8;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .heirloom-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .heirloom-image {
+            height: 160px;
+            background: #F5F3EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .heirloom-info {
+            padding: 1rem;
+        }
+
+        .heirloom-name {
+            font-weight: 600;
+            color: #3E3E3E;
+            margin-bottom: 0.25rem;
+        }
+
+        .heirloom-meta {
+            font-size: 0.75rem;
+            color: #5A5A5A;
+            margin-bottom: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .heirloom-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .heirloom-value {
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .heirloom-memories {
+            font-size: 0.75rem;
+            color: #5A5A5A;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .footer {
+            background: white;
+            border-top: 1px solid #E8E3D8;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-text {
+            color: #5A5A5A;
+            font-style: italic;
+            font-size: 0.875rem;
+        }
+
+        .coming-soon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon-card {
+            background: white;
+            border: 2px dashed #E8E3D8;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .coming-soon-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3E3E3E;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-date {
+            color: #D4AF37;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .coming-soon-desc {
+            color: #5A5A5A;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div>
+                    <h1>NextHeir</h1>
+                    <div class="subtitle sans">Digital Legacy Preservation</div>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="nav-btn active" onclick="showTab('vault')">My Vault</button>
+                <button class="nav-btn" onclick="showTab('packages')">Packages</button>
+                <button class="nav-btn" onclick="showTab('partner')">Partner</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED LEGACY HERO -->
+    <div class="featured-hero">
+        <div class="featured-content">
+            <div class="featured-image">
+                <img src="dean_martin_ring.png" alt="Featured Legacy Ring">
+            </div>
+            <div class="featured-text">
+                <div class="featured-label">Featured Legacy</div>
+                <h2 class="featured-title">The Thurston Diamond</h2>
+                <div class="featured-subtitle">7th Largest Diamond Ever Sold by Tiffany & Co.</div>
+                <p class="featured-description">
+                    A symbol of enduring love, now preserved forever. This extraordinary piece 
+                    represents the first white-glove legacy certification on the NextHeir platform—
+                    complete provenance, documented history, and a story that transcends generations.
+                </p>
+                <div class="featured-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Origin</div>
+                        <div class="meta-value">Tiffany & Co.</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Certification</div>
+                        <div class="meta-value">In Progress</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Launch</div>
+                        <div class="meta-value">Feb 14, 2026</div>
+                    </div>
+                </div>
+                <div class="featured-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Blockchain Verified Provenance
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Role Selector -->
+    <div class="role-bar">
+        <div class="role-content">
+            <span class="role-label sans">I am a:</span>
+            <button class="role-btn active" onclick="switchRole('family')">Individual/Family</button>
+            <button class="role-btn" onclick="switchRole('attorney')">Estate Attorney</button>
+            <button class="role-btn" onclick="switchRole('museum')">Museum/Collector</button>
+            <button class="role-btn" onclick="switchRole('insurance')">Insurance Agent</button>
+            <button class="role-btn" onclick="switchRole('brand')">Luxury Brand</button>
+            <button class="role-btn" onclick="switchRole('wedding')">Weddings</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Vault Tab -->
+        <div id="vault-tab">
+            <!-- Metrics -->
+            <div class="metrics-grid" id="metrics-grid"></div>
+
+            <!-- Coming Soon -->
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Launches</h2>
+            </div>
+            <div class="coming-soon-grid">
+                <div class="coming-soon-card">
+                    <div class="coming-soon-title">💍 Valentine's Day Launch</div>
+                    <div class="coming-soon-date">February 14, 2026</div>
+                    <div class="coming-soon-desc">The Thurston Diamond + NextHeir Platform Public Launch</div>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-title">🎬 Dean Martin Ring</div>
+                    <div class="coming-soon-date">March 2026</div>
+                    <div class="coming-soon-desc">Hollywood's First Blockchain-Verified Heirloom</div>
+                </div>
+            </div>
+
+            <!-- Collection -->
+            <div id="collection-section">
+                <div class="section-header">
+                    <h2 class="section-title">Your Legacy Collection</h2>
+                    <button class="primary-btn">+ Add Heirloom</button>
+                </div>
+                <div class="collection-grid">
+                    <div class="heirloom-card">
+                        <div class="heirloom-image">💍</div>
+                        <div class="heirloom-info">
+                            <div class="heirloom-name">Grandmother's Diamond Ring</div>
+                            <div class="heirloom-meta">Jewelry • 1947</div>
+                            <div class="heirloom-footer">
+                                <span class="heirloom-value">$12,500</span>
+                                <span class="heirloom-memories">💭 8 memories</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heirloom-card">
+                        <div class="heirloom-image">🏠</div>
+                        <div class="heirloom-info">
+                            <div class="heirloom-name">Family Home - Brooklyn</div>
+                            <div class="heirloom-meta">Real Estate • 1965</div>
+                            <div class="heirloom-footer">
+                                <span class="heirloom-value">$1.2M</span>
+                                <span class="heirloom-memories">💭 24 memories</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heirloom-card">
+                        <div class="heirloom-image">🍽️</div>
+                        <div class="heirloom-info">
+                            <div class="heirloom-name">Wedding China Collection</div>
+                            <div class="heirloom-meta">Heirloom • 1952</div>
+                            <div class="heirloom-footer">
+                                <span class="heirloom-value">$3,200</span>
+                                <span class="heirloom-memories">💭 12 memories</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="heirloom-card">
+                        <div class="heirloom-image">⌚</div>
+                        <div class="heirloom-info">
+                            <div class="heirloom-name">Father's Watch - Omega</div>
+                            <div class="heirloom-meta">Timepiece • 1978</div>
+                            <div class="heirloom-footer">
+                                <span class="heirloom-value">$8,900</span>
+                                <span class="heirloom-memories">💭 6 memories</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Packages Tab -->
+        <div id="packages-tab" style="display:none;">
+            <div style="text-align:center; margin-bottom:2rem;">
+                <h2 class="section-title">Choose Your Legacy Package</h2>
+                <p style="color:#5A5A5A;">One-time purchase. Lifetime preservation. No subscriptions.</p>
+            </div>
+            <p style="text-align:center; color:#5A5A5A;">Packages coming soon...</p>
+        </div>
+
+        <!-- Partner Tab -->
+        <div id="partner-tab" style="display:none;">
+            <div style="text-align:center; margin-bottom:2rem;">
+                <h2 class="section-title">Partner With NextHeir</h2>
+                <p style="color:#5A5A5A;">Join our network of trusted professionals</p>
+            </div>
+            <p style="text-align:center; color:#5A5A5A;">Partner information coming soon...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="footer-text">
+            Every element tells a story. Element United built the system that maps them all—making trust infrastructure.
+        </p>
+    </div>
+
+    <script>
+        const metrics = {
+            family: [
+                { label: 'Items Preserved', value: '24', icon: '🏛️' },
+                { label: 'Memories Attached', value: '87', icon: '💭' },
+                { label: 'Family Members', value: '8', icon: '👨‍👩‍👧‍👦' },
+                { label: 'Total Value', value: '$1.2M', icon: '💰' }
+            ],
+            attorney: [
+                { label: 'Client Estates', value: '45', icon: '📋' },
+                { label: 'Assets Documented', value: '892', icon: '📄' },
+                { label: 'Active Cases', value: '12', icon: '⚖️' },
+                { label: 'Settlement Ready', value: '8', icon: '✅' }
+            ],
+            museum: [
+                { label: 'Collection Items', value: '3,421', icon: '🏛️' },
+                { label: 'Verified Provenance', value: '98%', icon: '✓' },
+                { label: 'On Display', value: '287', icon: '🖼️' },
+                { label: 'Total Value', value: '$45M', icon: '💎' }
+            ],
+            insurance: [
+                { label: 'Active Policies', value: '234', icon: '🛡️' },
+                { label: 'Verified Assets', value: '1,456', icon: '✓' },
+                { label: 'Claims Processed', value: '18', icon: '📋' },
+                { label: 'Coverage Total', value: '$12M', icon: '💰' }
+            ],
+            brand: [
+                { label: 'Products Certified', value: '8,942', icon: '💍' },
+                { label: 'Active Certificates', value: '8,129', icon: '📜' },
+                { label: 'Customer Trust', value: '4.9/5', icon: '⭐' },
+                { label: 'Return Rate', value: '0.3%', icon: '📊' }
+            ],
+            wedding: [
+                { label: 'Couples Served', value: '347', icon: '💑' },
+                { label: 'Gifts Registered', value: '4,289', icon: '🎁' },
+                { label: 'Legacy Items', value: '892', icon: '💍' },
+                { label: 'Avg. Gift Value', value: '$2,400', icon: '💝' }
+            ]
+        };
+
+        let currentRole = 'family';
+
+        function renderMetrics() {
+            const grid = document.getElementById('metrics-grid');
+            const data = metrics[currentRole];
+            
+            grid.innerHTML = data.map(m => `
+                <div class="metric-card">
+                    <div class="metric-icon">${m.icon}</div>
+                    <div class="metric-label">${m.label}</div>
+                    <div class="metric-value">${m.value}</div>
+                </div>
+            `).join('');
+        }
+
+        function switchRole(role) {
+            currentRole = role;
+            
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const collectionSection = document.getElementById('collection-section');
+            if (role === 'family') {
+                collectionSection.style.display = 'block';
+            } else {
+                collectionSection.style.display = 'none';
+            }
+            
+            renderMetrics();
+        }
+
+        function showTab(tab) {
+            document.querySelectorAll('[id$="-tab"]').forEach(t => {
+                t.style.display = 'none';
+            });
+            
+            document.getElementById(tab + '-tab').style.display = 'block';
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        renderMetrics();
+    </script>
+</body>
+</html>
