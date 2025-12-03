@@ -44,6 +44,8 @@
         .logo {
             width: 36px;
             height: 36px;
+            background: #E8FF00;
+            border-radius: 6px;
         }
 
         h1 {
@@ -72,6 +74,7 @@
             font-size: 0.875rem;
             font-weight: 500;
             transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .nav-btn:hover {
@@ -83,6 +86,131 @@
             color: white;
         }
 
+        /* FEATURED LEGACY HERO */
+        .featured-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+        }
+
+        .featured-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .featured-image img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .featured-text {
+            color: white;
+        }
+
+        .featured-label {
+            display: inline-block;
+            background: #D4AF37;
+            color: #1a1a1a;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .featured-subtitle {
+            font-size: 1.25rem;
+            color: #D4AF37;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .featured-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .meta-item {
+            text-align: left;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            color: #D4AF37;
+            font-size: 0.875rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .featured-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* REST OF PAGE */
         .role-bar {
             background: white;
             border-bottom: 1px solid #E8E3D8;
@@ -113,6 +241,7 @@
             font-size: 0.875rem;
             font-weight: 500;
             transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .role-btn:hover {
@@ -153,6 +282,7 @@
             color: #5A5A5A;
             font-size: 0.875rem;
             margin-bottom: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .metric-value {
@@ -184,6 +314,7 @@
             cursor: pointer;
             font-size: 0.875rem;
             transition: opacity 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .primary-btn:hover {
@@ -210,12 +341,12 @@
         }
 
         .heirloom-image {
-            height: 200px;
+            height: 160px;
             background: #F5F3EE;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3rem;
         }
 
         .heirloom-info {
@@ -232,210 +363,75 @@
             font-size: 0.75rem;
             color: #5A5A5A;
             margin-bottom: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .heirloom-footer {
             display: flex;
             justify-content: space-between;
-            font-size: 0.875rem;
+            align-items: center;
         }
 
         .heirloom-value {
-            color: #D4AF37;
             font-weight: 600;
+            color: #D4AF37;
         }
 
         .heirloom-memories {
-            color: #5A5A5A;
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .package-card {
-            background: white;
-            border: 2px solid #E8E3D8;
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .package-card.popular {
-            border-color: #D4AF37;
-            position: relative;
-        }
-
-        .popular-badge {
-            background: #D4AF37;
-            color: white;
             font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-
-        .package-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #3E3E3E;
-            margin-bottom: 0.25rem;
-        }
-
-        .package-desc {
-            font-size: 0.875rem;
             color: #5A5A5A;
-            margin-bottom: 1rem;
-        }
-
-        .package-price {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #D4AF37;
-            margin-bottom: 0.25rem;
-        }
-
-        .package-period {
-            font-size: 0.875rem;
-            color: #5A5A5A;
-            margin-bottom: 1.5rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .features-list li {
-            padding: 0.5rem 0;
-            font-size: 0.875rem;
-            color: #5A5A5A;
-        }
-
-        .features-list li:before {
-            content: "✓ ";
-            color: #7D9B76;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .addons-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .addon-card {
-            background: white;
-            border: 1px solid #E8E3D8;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: box-shadow 0.2s;
-        }
-
-        .addon-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .addon-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .addon-name {
-            font-weight: 600;
-            color: #3E3E3E;
-            margin-bottom: 0.5rem;
-        }
-
-        .addon-price {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #D4AF37;
-            margin-bottom: 1rem;
-        }
-
-        .partner-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .partner-card {
-            background: white;
-            border: 1px solid #E8E3D8;
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: box-shadow 0.2s;
-        }
-
-        .partner-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .partner-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .partner-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #3E3E3E;
-            margin-bottom: 0.75rem;
-        }
-
-        .partner-desc {
-            color: #5A5A5A;
-            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .footer {
             background: white;
             border-top: 1px solid #E8E3D8;
-            margin-top: 3rem;
             padding: 2rem;
-            text-center;
+            text-align: center;
+            margin-top: 2rem;
         }
 
         .footer-text {
-            color: #999;
-            font-size: 0.875rem;
-            font-style: italic;
-        }
-
-        .intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .intro h2 {
-            font-size: 2rem;
-            color: #3E3E3E;
-            margin-bottom: 1rem;
-        }
-
-        .intro p {
-            font-size: 1.125rem;
             color: #5A5A5A;
+            font-style: italic;
+            font-size: 0.875rem;
         }
 
-        @media (max-width: 1024px) {
-            .metrics-grid,
-            .collection-grid,
-            .packages-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .addons-grid,
-            .partner-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
+        .coming-soon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon-card {
+            background: white;
+            border: 2px dashed #E8E3D8;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .coming-soon-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3E3E3E;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon-date {
+            color: #D4AF37;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .coming-soon-desc {
+            color: #5A5A5A;
+            font-size: 0.875rem;
         }
     </style>
 </head>
@@ -444,32 +440,63 @@
     <div class="header">
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo">
-                    <svg viewBox="0 0 100 100" fill="none">
-                        <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" 
-                              stroke="#D4AF37" stroke-width="3" fill="none"/>
-                        <circle cx="50" cy="50" r="15" stroke="#D4AF37" stroke-width="3" fill="none"/>
-                        <circle cx="50" cy="50" r="8" fill="#D4AF37"/>
-                    </svg>
-                </div>
+                <div class="logo"></div>
                 <div>
                     <h1>NextHeir</h1>
                     <div class="subtitle sans">Digital Legacy Preservation</div>
                 </div>
             </div>
-            <nav class="nav sans">
-                <button class="nav-btn active" onclick="showTab('vault')">Vault</button>
-                <button class="nav-btn" onclick="showTab('services')">Services</button>
+            <div class="nav">
+                <button class="nav-btn active" onclick="showTab('vault')">My Vault</button>
                 <button class="nav-btn" onclick="showTab('packages')">Packages</button>
                 <button class="nav-btn" onclick="showTab('partner')">Partner</button>
-            </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED LEGACY HERO -->
+    <div class="featured-hero">
+        <div class="featured-content">
+            <div class="featured-image">
+                <img src="dean_martin_ring.png" alt="Featured Legacy Ring">
+            </div>
+            <div class="featured-text">
+                <div class="featured-label">Featured Legacy</div>
+                <h2 class="featured-title">The Thurston Diamond</h2>
+                <div class="featured-subtitle">7th Largest Diamond Ever Sold by Tiffany & Co.</div>
+                <p class="featured-description">
+                    A symbol of enduring love, now preserved forever. This extraordinary piece 
+                    represents the first white-glove legacy certification on the NextHeir platform—
+                    complete provenance, documented history, and a story that transcends generations.
+                </p>
+                <div class="featured-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Origin</div>
+                        <div class="meta-value">Tiffany & Co.</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Certification</div>
+                        <div class="meta-value">In Progress</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Launch</div>
+                        <div class="meta-value">Feb 14, 2026</div>
+                    </div>
+                </div>
+                <div class="featured-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Blockchain Verified Provenance
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Role Selector -->
     <div class="role-bar">
-        <div class="role-content sans">
-            <span class="role-label">View as:</span>
+        <div class="role-content">
+            <span class="role-label sans">I am a:</span>
             <button class="role-btn active" onclick="switchRole('family')">Individual/Family</button>
             <button class="role-btn" onclick="switchRole('attorney')">Estate Attorney</button>
             <button class="role-btn" onclick="switchRole('museum')">Museum/Collector</button>
@@ -483,221 +510,97 @@
     <div class="container">
         <!-- Vault Tab -->
         <div id="vault-tab">
-            <div class="metrics-grid sans" id="metrics-grid"></div>
-            
+            <!-- Metrics -->
+            <div class="metrics-grid" id="metrics-grid"></div>
+
+            <!-- Coming Soon -->
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Launches</h2>
+            </div>
+            <div class="coming-soon-grid">
+                <div class="coming-soon-card">
+                    <div class="coming-soon-title">💍 Valentine's Day Launch</div>
+                    <div class="coming-soon-date">February 14, 2026</div>
+                    <div class="coming-soon-desc">The Thurston Diamond + NextHeir Platform Public Launch</div>
+                </div>
+                <div class="coming-soon-card">
+                    <div class="coming-soon-title">🎬 Dean Martin Ring</div>
+                    <div class="coming-soon-date">March 2026</div>
+                    <div class="coming-soon-desc">Hollywood's First Blockchain-Verified Heirloom</div>
+                </div>
+            </div>
+
+            <!-- Collection -->
             <div id="collection-section">
                 <div class="section-header">
-                    <h2 class="section-title">Your Collection</h2>
-                    <button class="primary-btn sans">+ Add Heirloom</button>
+                    <h2 class="section-title">Your Legacy Collection</h2>
+                    <button class="primary-btn">+ Add Heirloom</button>
                 </div>
-                
                 <div class="collection-grid">
                     <div class="heirloom-card">
                         <div class="heirloom-image">💍</div>
-                        <div class="heirloom-info sans">
+                        <div class="heirloom-info">
                             <div class="heirloom-name">Grandmother's Diamond Ring</div>
                             <div class="heirloom-meta">Jewelry • 1947</div>
                             <div class="heirloom-footer">
                                 <span class="heirloom-value">$12,500</span>
-                                <span class="heirloom-memories">8 memories</span>
+                                <span class="heirloom-memories">💭 8 memories</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="heirloom-card">
                         <div class="heirloom-image">🏠</div>
-                        <div class="heirloom-info sans">
+                        <div class="heirloom-info">
                             <div class="heirloom-name">Family Home - Brooklyn</div>
                             <div class="heirloom-meta">Real Estate • 1965</div>
                             <div class="heirloom-footer">
                                 <span class="heirloom-value">$1.2M</span>
-                                <span class="heirloom-memories">24 memories</span>
+                                <span class="heirloom-memories">💭 24 memories</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="heirloom-card">
                         <div class="heirloom-image">🍽️</div>
-                        <div class="heirloom-info sans">
+                        <div class="heirloom-info">
                             <div class="heirloom-name">Wedding China Collection</div>
                             <div class="heirloom-meta">Heirloom • 1952</div>
                             <div class="heirloom-footer">
                                 <span class="heirloom-value">$3,200</span>
-                                <span class="heirloom-memories">12 memories</span>
+                                <span class="heirloom-memories">💭 12 memories</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="heirloom-card">
                         <div class="heirloom-image">⌚</div>
-                        <div class="heirloom-info sans">
+                        <div class="heirloom-info">
                             <div class="heirloom-name">Father's Watch - Omega</div>
                             <div class="heirloom-meta">Timepiece • 1978</div>
                             <div class="heirloom-footer">
                                 <span class="heirloom-value">$8,900</span>
-                                <span class="heirloom-memories">6 memories</span>
+                                <span class="heirloom-memories">💭 6 memories</span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Services Tab -->
-        <div id="services-tab" style="display:none;">
-            <div class="intro">
-                <h2>Services & Add-ons</h2>
-                <p>Enhance your legacy with professional storytelling, video recording, and custom design</p>
-            </div>
-
-            <div class="addons-grid sans">
-                <div class="addon-card">
-                    <div class="addon-icon">📝</div>
-                    <div class="addon-name">Professional Story Writing</div>
-                    <div class="addon-price">$199</div>
-                    <button class="primary-btn">Add to Package</button>
-                </div>
-
-                <div class="addon-card">
-                    <div class="addon-icon">🎥</div>
-                    <div class="addon-name">Video Recording Session</div>
-                    <div class="addon-price">$299</div>
-                    <button class="primary-btn">Add to Package</button>
-                </div>
-
-                <div class="addon-card">
-                    <div class="addon-icon">🎨</div>
-                    <div class="addon-name">Custom Certificate Design</div>
-                    <div class="addon-price">$149</div>
-                    <button class="primary-btn">Add to Package</button>
-                </div>
-
-                <div class="addon-card">
-                    <div class="addon-icon">💎</div>
-                    <div class="addon-name">Appraisal Integration</div>
-                    <div class="addon-price">$99</div>
-                    <button class="primary-btn">Add to Package</button>
-                </div>
-
-                <div class="addon-card">
-                    <div class="addon-icon">🌳</div>
-                    <div class="addon-name">Family Tree Mapping</div>
-                    <div class="addon-price">$179</div>
-                    <button class="primary-btn">Add to Package</button>
                 </div>
             </div>
         </div>
 
         <!-- Packages Tab -->
         <div id="packages-tab" style="display:none;">
-            <div class="intro">
-                <h2>Choose Your Legacy Package</h2>
-                <p>One-time purchase. Lifetime preservation. No subscriptions.</p>
+            <div style="text-align:center; margin-bottom:2rem;">
+                <h2 class="section-title">Choose Your Legacy Package</h2>
+                <p style="color:#5A5A5A;">One-time purchase. Lifetime preservation. No subscriptions.</p>
             </div>
-
-            <div class="packages-grid sans">
-                <div class="package-card">
-                    <div class="package-name">Keepsake</div>
-                    <div class="package-desc">One memory that matters</div>
-                    <div class="package-price">$29</div>
-                    <div class="package-period">one-time</div>
-                    <ul class="features-list">
-                        <li>1 Digital Certificate</li>
-                        <li>Photo & Document Upload</li>
-                        <li>Basic Story Template</li>
-                        <li>Share with 3 People</li>
-                        <li>Permanent Storage</li>
-                    </ul>
-                    <button class="primary-btn" style="width:100%;">Get Started</button>
-                </div>
-
-                <div class="package-card popular">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <div class="package-name">Legacy Collection</div>
-                    <div class="package-desc">Curated family collection</div>
-                    <div class="package-price">$99</div>
-                    <div class="package-period">one-time</div>
-                    <ul class="features-list">
-                        <li>10 Digital Certificates</li>
-                        <li>Photo, Video & Audio Upload</li>
-                        <li>Custom Story Templates</li>
-                        <li>Share with 10 People</li>
-                        <li>Family Tree Integration</li>
-                        <li>Email Support</li>
-                    </ul>
-                    <button class="primary-btn" style="width:100%;">Get Started</button>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-name">Archive</div>
-                    <div class="package-desc">Build your digital archive</div>
-                    <div class="package-price">$249</div>
-                    <div class="package-period">one-time</div>
-                    <ul class="features-list">
-                        <li>50 Digital Certificates</li>
-                        <li>Unlimited Media Upload</li>
-                        <li>Professional Story Support</li>
-                        <li>Unlimited Sharing</li>
-                        <li>Provenance Timeline</li>
-                        <li>Priority Support</li>
-                        <li>Estate Planning Tools</li>
-                    </ul>
-                    <button class="primary-btn" style="width:100%;">Start Archiving</button>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-name">Estate</div>
-                    <div class="package-desc">Complete generational vault</div>
-                    <div class="package-price">$499</div>
-                    <div class="package-period">one-time</div>
-                    <ul class="features-list">
-                        <li>Unlimited Certificates</li>
-                        <li>Concierge Service</li>
-                        <li>White-Glove Onboarding</li>
-                        <li>Attorney Portal Access</li>
-                        <li>Custom Templates</li>
-                        <li>Video Storytelling</li>
-                        <li>API Access</li>
-                        <li>Dedicated Manager</li>
-                    </ul>
-                    <button class="primary-btn" style="width:100%;">Contact Sales</button>
-                </div>
-            </div>
-
-            <div style="text-align:center; margin-top:2rem; padding:1.5rem; background:white; border-radius:12px; border:1px solid #E8E3D8;" class="sans">
-                <strong>First 250 customers receive 20% off</strong> all packages. Use code <strong style="color:#D4AF37;">LEGACY20</strong> at checkout.
-            </div>
+            <p style="text-align:center; color:#5A5A5A;">Packages coming soon...</p>
         </div>
 
         <!-- Partner Tab -->
         <div id="partner-tab" style="display:none;">
-            <div class="intro">
-                <h2>Partner With NextHeir</h2>
-                <p>Join our network of trusted professionals, vendors, and enterprises</p>
+            <div style="text-align:center; margin-bottom:2rem;">
+                <h2 class="section-title">Partner With NextHeir</h2>
+                <p style="color:#5A5A5A;">Join our network of trusted professionals</p>
             </div>
-
-            <div class="partner-grid sans">
-                <div class="partner-card">
-                    <div class="partner-icon">🤝</div>
-                    <div class="partner-title">Become a Vendor</div>
-                    <div class="partner-desc">Appraisers, photographers, attorneys, and estate professionals</div>
-                    <button class="primary-btn">Apply Now</button>
-                </div>
-
-                <div class="partner-card">
-                    <div class="partner-icon">🏢</div>
-                    <div class="partner-title">Enterprise Solutions</div>
-                    <div class="partner-desc">White-label, API access, volume licensing for institutions</div>
-                    <button class="primary-btn" style="background:#3E3E3E;">Request Demo</button>
-                </div>
-
-                <div class="partner-card">
-                    <div class="partner-icon">📈</div>
-                    <div class="partner-title">Investment Opportunities</div>
-                    <div class="partner-desc">Join our journey to preserve the world's legacy</div>
-                    <button class="primary-btn" style="background:#3E3E3E;">Learn More</button>
-                </div>
-            </div>
+            <p style="text-align:center; color:#5A5A5A;">Partner information coming soon...</p>
         </div>
     </div>
 
@@ -771,7 +674,6 @@
             });
             event.target.classList.add('active');
             
-            // Show/hide collection based on role
             const collectionSection = document.getElementById('collection-section');
             if (role === 'family') {
                 collectionSection.style.display = 'block';
