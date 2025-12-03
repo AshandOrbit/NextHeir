@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextHeir - Digital Legacy Preservation | Element United</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, 'Times New Roman', serif; background: #FAF8F3; color: #3E3E3E; }
+        .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        
+        .header { background: white; border-bottom: 1px solid #E8E3D8; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .logo-section { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+        .logo { width: 36px; height: 36px; background: #0ABAB5; border-radius: 6px; }
+        h1 { color: #3E3E3E; font-size: 1.5rem; font-weight: 600; }
+        .subtitle { font-size: 0.75rem; color: #5A5A5A; }
+        
+        .nav { display: flex; gap: 0.5rem; }
+        .nav-btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; background: transparent; color: #5A5A5A; cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; }
+        .nav-btn:hover { background: #F5F3EE; }
+        .nav-btn.active { background: #0ABAB5; color: white; }
+        
+        .auth-btns { display: flex; gap: 0.5rem; }
+        .login-btn { padding: 0.5rem 1rem; border: 1px solid #E8E3D8; border-radius: 8px; background: white; color: #3E3E3E; cursor: pointer; font-size: 0.875rem; font-weight: 500; font-family: -apple-system, sans-serif; }
+        .login-btn:hover { background: #F5F3EE; }
+        .signup-btn { padding: 0.5rem 1rem; border: none; border-radius: 8px; background: #0ABAB5; color: white; cursor: pointer; font-size: 0.875rem; font-weight: 500; font-family: -apple-system, sans-serif; }
+        .signup-btn:hover { background: #088F8B; }
+        
+        .featured-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 4rem 2rem; position: relative; overflow: hidden; }
+        .featured-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(10, 186, 181, 0.15) 0%, transparent 60%); }
+        .featured-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .featured-image { display: flex; justify-content: center; align-items: center; }
+        .featured-image img { max-width: 400px; width: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .featured-text { color: white; }
+        .featured-label { display: inline-block; background: #0ABAB5; color: white; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; font-family: -apple-system, sans-serif; }
+        .featured-title { font-size: 2.5rem; font-weight: 600; margin-bottom: 0.5rem; color: white; }
+        .featured-subtitle { font-size: 1.25rem; color: #0ABAB5; margin-bottom: 1.5rem; font-style: italic; }
+        .featured-description { font-size: 1.1rem; line-height: 1.7; color: #cccccc; margin-bottom: 2rem; }
+        .featured-meta { display: flex; gap: 2rem; margin-bottom: 2rem; font-family: -apple-system, sans-serif; }
+        .meta-item { text-align: left; }
+        .meta-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
+        .meta-value { font-size: 1.25rem; color: white; font-weight: 600; }
+        .featured-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(10, 186, 181, 0.15); border: 1px solid rgba(10, 186, 181, 0.3); padding: 0.5rem 1rem; border-radius: 8px; color: #0ABAB5; font-size: 0.875rem; font-family: -apple-system, sans-serif; }
+        
+        .role-bar { background: white; border-bottom: 1px solid #E8E3D8; padding: 0.75rem 2rem; }
+        .role-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .role-label { color: #5A5A5A; font-size: 0.875rem; }
+        .role-btn { padding: 0.375rem 1rem; border: none; border-radius: 20px; background: #F5F3EE; color: #5A5A5A; cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; font-family: -apple-system, sans-serif; }
+        .role-btn:hover { background: #E8E3D8; }
+        .role-btn.active { background: #0ABAB5; color: white; }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .section-title { font-size: 1.5rem; font-weight: 600; color: #3E3E3E; }
+        .primary-btn { padding: 0.625rem 1.25rem; background: #0ABAB5; border: none; border-radius: 8px; color: white; font-weight: 500; cursor: pointer; font-size: 0.875rem; font-family: -apple-system, sans-serif; }
+        .primary-btn:hover { background: #088F8B; }
+        .secondary-btn { padding: 0.625rem 1.25rem; background: #3E3E3E; border: none; border-radius: 8px; color: white; font-weight: 500; cursor: pointer; font-size: 0.875rem; font-family: -apple-system, sans-serif; }
+        .secondary-btn:hover { background: #2a2a2a; }
+        
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .metric-card { background: white; border: 1px solid #E8E3D8; border-radius: 12px; padding: 1.5rem; transition: all 0.2s; }
+        .metric-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .metric-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .metric-label { color: #5A5A5A; font-size: 0.875rem; margin-bottom: 0.5rem; font-family: -apple-system, sans-serif; }
+        .metric-value { font-size: 1.75rem; font-weight: 600; color: #3E3E3E; }
+        
+        .coming-soon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .coming-soon-card { background: white; border: 2px dashed #E8E3D8; border-radius: 12px; padding: 2rem; text-align: center; }
+        .coming-soon-title { font-size: 1.25rem; font-weight: 600; color: #3E3E3E; margin-bottom: 0.5rem; }
+        .coming-soon-date { color: #0ABAB5; font-weight: 600; margin-bottom: 0.5rem; font-family: -apple-system, sans-serif; }
+        .coming-soon-desc { font-size: 0.875rem; color: #5A5A5A; }
+        
+        .collection-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .heirloom-card { background: white; border: 1px solid #E8E3D8; border-radius: 12px; overflow: hidden; transition: all 0.2s; cursor: pointer; }
+        .heirloom-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .heirloom-image { height: 160px; background: #F5F3EE; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .heirloom-info { padding: 1rem; }
+        .heirloom-name { font-weight: 600; color: #3E3E3E; margin-bottom: 0.25rem; }
+        .heirloom-meta { font-size: 0.75rem; color: #5A5A5A; margin-bottom: 0.75rem; font-family: -apple-system, sans-serif; }
+        .heirloom-footer { display: flex; justify-content: space-between; align-items: center; }
+        .heirloom-value { font-weight: 600; color: #0ABAB5; }
+        .heirloom-memories { font-size: 0.75rem; color: #5A5A5A; font-family: -apple-system, sans-serif; }
+        
+        .addons-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .addon-card { background: white; border: 1px solid #E8E3D8; border-radius: 12px; padding: 1.25rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .addon-card:hover { border-color: #0ABAB5; box-shadow: 0 4px 12px rgba(10, 186, 181, 0.15); }
+        .addon-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .addon-name { font-size: 0.875rem; font-weight: 600; color: #3E3E3E; margin-bottom: 0.5rem; }
+        .addon-price { font-size: 1rem; font-weight: 600; color: #0ABAB5; }
+        
+        .intro { text-align: center; max-width: 700px; margin: 0 auto 2rem; }
+        .intro h2 { font-size: 2rem; color: #3E3E3E; margin-bottom: 0.5rem; }
+        .intro p { color: #5A5A5A; font-size: 1.1rem; }
+        
+        .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .package-card { background: white; border: 1px solid #E8E3D8; border-radius: 16px; padding: 2rem; position: relative; transition: all 0.2s; }
+        .package-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .package-card.popular { border: 2px solid #0ABAB5; }
+        .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0ABAB5; color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; font-family: -apple-system, sans-serif; }
+        .package-name { font-size: 1.25rem; font-weight: 600; color: #3E3E3E; margin-bottom: 0.25rem; }
+        .package-desc { font-size: 0.875rem; color: #5A5A5A; margin-bottom: 1rem; }
+        .package-price { font-size: 2.5rem; font-weight: 700; color: #0ABAB5; }
+        .package-period { font-size: 0.875rem; color: #888; margin-bottom: 1.5rem; font-family: -apple-system, sans-serif; }
+        .features-list { list-style: none; margin-bottom: 1.5rem; }
+        .features-list li { padding: 0.5rem 0; font-size: 0.875rem; color: #5A5A5A; display: flex; align-items: center; gap: 0.5rem; font-family: -apple-system, sans-serif; }
+        .features-list li::before { content: '✓'; color: #0ABAB5; font-weight: bold; }
+        .package-btn { width: 100%; padding: 0.75rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: -apple-system, sans-serif; }
+        .package-btn.primary { background: #0ABAB5; color: white; }
+        .package-btn.primary:hover { background: #088F8B; }
+        .package-btn.secondary { background: #3E3E3E; color: white; }
+        .package-btn.secondary:hover { background: #2a2a2a; }
+        .promo-banner { background: white; border: 1px solid #E8E3D8; border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 2rem; }
+        .promo-code { color: #0ABAB5; font-weight: 700; }
+        
+        .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .partner-card { background: white; border: 1px solid #E8E3D8; border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.2s; }
+        .partner-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .partner-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .partner-title { font-size: 1.25rem; font-weight: 600; color: #3E3E3E; margin-bottom: 0.5rem; }
+        .partner-desc { font-size: 0.875rem; color: #5A5A5A; margin-bottom: 1.5rem; }
+        
+        .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .testimonial-card { background: white; border: 1px solid #E8E3D8; border-radius: 12px; padding: 1.5rem; }
+        .testimonial-text { font-style: italic; color: #5A5A5A; margin-bottom: 1rem; line-height: 1.6; }
+        .testimonial-author { font-weight: 600; color: #3E3E3E; }
+        .testimonial-role { font-size: 0.875rem; color: #888; font-family: -apple-system, sans-serif; }
+        
+        .footer { background: white; border-top: 1px solid #E8E3D8; padding: 2rem; text-align: center; margin-top: 2rem; }
+        .footer-text { color: #5A5A5A; font-style: italic; font-size: 0.875rem; }
+        
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: white; border-radius: 16px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid #E8E3D8; display: flex; justify-content: space-between; align-items: center; }
+        .modal-title { font-size: 1.25rem; font-weight: 600; color: #3E3E3E; }
+        .modal-close { width: 32px; height: 32px; border: none; background: #F5F3EE; border-radius: 50%; cursor: pointer; font-size: 1.25rem; color: #5A5A5A; }
+        .modal-close:hover { background: #E8E3D8; }
+        .modal-body { padding: 1.5rem; }
+        .modal-body p { margin-bottom: 1rem; color: #5A5A5A; line-height: 1.6; }
+        .modal-footer { padding: 1.5rem; border-top: 1px solid #E8E3D8; display: flex; gap: 1rem; justify-content: flex-end; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 0.875rem; font-weight: 500; color: #3E3E3E; margin-bottom: 0.5rem; font-family: -apple-system, sans-serif; }
+        .form-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #E8E3D8; border-radius: 8px; font-size: 1rem; font-family: Georgia, serif; }
+        .form-input:focus { outline: none; border-color: #0ABAB5; }
+        
+        @media (max-width: 1024px) {
+            .featured-content { grid-template-columns: 1fr; text-align: center; }
+            .featured-meta { justify-content: center; }
+            .packages-grid, .metrics-grid, .collection-grid { grid-template-columns: repeat(2, 1fr); }
+            .addons-grid { grid-template-columns: repeat(3, 1fr); }
+            .partner-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .packages-grid, .metrics-grid, .collection-grid, .addons-grid { grid-template-columns: 1fr; }
+            .nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section" onclick="switchTab('vault')">
+                <div class="logo"></div>
+                <div><h1>NextHeir</h1><div class="subtitle sans">Digital Legacy Preservation</div></div>
+            </div>
+            <div class="nav">
+                <button class="nav-btn active" data-tab="vault" onclick="switchTab('vault')">Explore</button>
+                <button class="nav-btn" data-tab="packages" onclick="switchTab('packages')">Packages</button>
+                <button class="nav-btn" data-tab="partner" onclick="switchTab('partner')">Partner</button>
+            </div>
+            <div class="auth-btns">
+                <button class="login-btn" onclick="openModal('login-modal')">Log In</button>
+                <button class="signup-btn" onclick="openModal('signup-modal')">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-hero">
+        <div class="featured-content">
+            <div class="featured-image"><img src="dean_martin_ring.png" alt="Tiffany Diamond"></div>
+            <div class="featured-text">
+                <div class="featured-label">Featured Legacy</div>
+                <h2 class="featured-title">A Tiffany Masterpiece</h2>
+                <div class="featured-subtitle">7th Largest Diamond Ever Sold by the House</div>
+                <p class="featured-description">From a private collection, now preserved forever. The first white-glove legacy certification on NextHeir—complete provenance, verified history, a love story that transcends generations.</p>
+                <div class="featured-meta">
+                    <div class="meta-item"><div class="meta-label">Origin</div><div class="meta-value">Tiffany & Co.</div></div>
+                    <div class="meta-item"><div class="meta-label">Est. Value</div><div class="meta-value">$1.5M</div></div>
+                    <div class="meta-item"><div class="meta-label">Collection</div><div class="meta-value">Private</div></div>
+                    <div class="meta-item"><div class="meta-label">Launch</div><div class="meta-value">Feb 14, 2026</div></div>
+                </div>
+                <div class="featured-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Blockchain Verified Provenance
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="role-bar">
+        <div class="role-content">
+            <span class="role-label sans">I am a:</span>
+            <button class="role-btn active" onclick="switchRole(this, 'family')">Individual/Family</button>
+            <button class="role-btn" onclick="switchRole(this, 'attorney')">Estate Attorney</button>
+            <button class="role-btn" onclick="switchRole(this, 'museum')">Museum/Collector</button>
+            <button class="role-btn" onclick="switchRole(this, 'insurance')">Insurance Agent</button>
+            <button class="role-btn" onclick="switchRole(this, 'brand')">Luxury Brand</button>
+            <button class="role-btn" onclick="switchRole(this, 'wedding')">Weddings</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tab-content active" id="vault-tab">
+            <div class="metrics-grid" id="metrics-grid">
+                <div class="metric-card"><div class="metric-icon">🏛️</div><div class="metric-label">Items Preserved</div><div class="metric-value">24</div></div>
+                <div class="metric-card"><div class="metric-icon">💭</div><div class="metric-label">Memories Attached</div><div class="metric-value">87</div></div>
+                <div class="metric-card"><div class="metric-icon">👨‍👩‍👧‍👦</div><div class="metric-label">Family Members</div><div class="metric-value">8</div></div>
+                <div class="metric-card"><div class="metric-icon">💰</div><div class="metric-label">Total Value</div><div class="metric-value">$1.2M</div></div>
+            </div>
+
+            <div class="section-header"><h2 class="section-title">Upcoming Launches</h2></div>
+            <div class="coming-soon-grid">
+                <div class="coming-soon-card"><div class="coming-soon-title">💍 Valentine's Day Launch</div><div class="coming-soon-date">February 14, 2026</div><div class="coming-soon-desc">Tiffany Diamond + NextHeir Platform Public Launch</div></div>
+                <div class="coming-soon-card"><div class="coming-soon-title">🎬 Dean Martin Ring</div><div class="coming-soon-date">March 2026</div><div class="coming-soon-desc">Hollywood's First Blockchain-Verified Heirloom</div></div>
+            </div>
+
+            <div class="section-header"><h2 class="section-title">Sample Legacy Collection</h2><button class="primary-btn" onclick="openModal('signup-modal')">Start Your Vault</button></div>
+            <div class="collection-grid">
+                <div class="heirloom-card"><div class="heirloom-image">💍</div><div class="heirloom-info"><div class="heirloom-name">Grandmother's Diamond Ring</div><div class="heirloom-meta">Jewelry • 1947</div><div class="heirloom-footer"><span class="heirloom-value">$12,500</span><span class="heirloom-memories">💭 8 memories</span></div></div></div>
+                <div class="heirloom-card"><div class="heirloom-image">🏠</div><div class="heirloom-info"><div class="heirloom-name">Family Home - Brooklyn</div><div class="heirloom-meta">Real Estate • 1965</div><div class="heirloom-footer"><span class="heirloom-value">$1.2M</span><span class="heirloom-memories">💭 24 memories</span></div></div></div>
+                <div class="heirloom-card"><div class="heirloom-image">🍽️</div><div class="heirloom-info"><div class="heirloom-name">Wedding China Collection</div><div class="heirloom-meta">Heirloom • 1952</div><div class="heirloom-footer"><span class="heirloom-value">$3,200</span><span class="heirloom-memories">💭 12 memories</span></div></div></div>
+                <div class="heirloom-card"><div class="heirloom-image">⌚</div><div class="heirloom-info"><div class="heirloom-name">Father's Watch - Omega</div><div class="heirloom-meta">Timepiece • 1978</div><div class="heirloom-footer"><span class="heirloom-value">$8,900</span><span class="heirloom-memories">💭 6 memories</span></div></div></div>
+            </div>
+
+            <div class="section-header"><h2 class="section-title">Premium Services</h2></div>
+            <div class="addons-grid">
+                <div class="addon-card"><div class="addon-icon">📝</div><div class="addon-name">Story Writing</div><div class="addon-price">$199</div></div>
+                <div class="addon-card"><div class="addon-icon">🎥</div><div class="addon-name">Video Session</div><div class="addon-price">$299</div></div>
+                <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-name">Custom Design</div><div class="addon-price">$149</div></div>
+                <div class="addon-card"><div class="addon-icon">💎</div><div class="addon-name">Appraisal</div><div class="addon-price">$99</div></div>
+                <div class="addon-card"><div class="addon-icon">🌳</div><div class="addon-name">Family Tree</div><div class="addon-price">$179</div></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="packages-tab">
+            <div class="intro"><h2>Choose Your Legacy Package</h2><p>One-time purchase. Lifetime preservation. No subscriptions.</p></div>
+            <div class="packages-grid sans">
+                <div class="package-card">
+                    <div class="package-name">Keepsake</div><div class="package-desc">One memory that matters</div>
+                    <div class="package-price">$49</div><div class="package-period">one-time</div>
+                    <ul class="features-list"><li>1 Digital Certificate</li><li>Photo & Document Upload</li><li>Basic Story Template</li><li>Share with 3 People</li><li>Permanent Storage</li></ul>
+                    <button class="package-btn secondary" onclick="openModal('signup-modal')">Get Started</button>
+                </div>
+                <div class="package-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="package-name">Legacy</div><div class="package-desc">Curated family collection</div>
+                    <div class="package-price">$99</div><div class="package-period">one-time</div>
+                    <ul class="features-list"><li>10 Digital Certificates</li><li>Photo, Video & Audio</li><li>Custom Story Templates</li><li>Share with 10 People</li><li>Family Tree Integration</li><li>Email Support</li></ul>
+                    <button class="package-btn primary" onclick="openModal('signup-modal')">Get Started</button>
+                </div>
+                <div class="package-card">
+                    <div class="package-name">Archive</div><div class="package-desc">Build your digital archive</div>
+                    <div class="package-price">$249</div><div class="package-period">one-time</div>
+                    <ul class="features-list"><li>50 Digital Certificates</li><li>Unlimited Media Upload</li><li>Professional Support</li><li>Unlimited Sharing</li><li>Provenance Timeline</li><li>Priority Support</li></ul>
+                    <button class="package-btn secondary" onclick="openModal('signup-modal')">Start Archiving</button>
+                </div>
+                <div class="package-card">
+                    <div class="package-name">Estate</div><div class="package-desc">Complete generational vault</div>
+                    <div class="package-price">$499</div><div class="package-period">one-time</div>
+                    <ul class="features-list"><li>Unlimited Certificates</li><li>Concierge Service</li><li>White-Glove Onboarding</li><li>Attorney Portal</li><li>Video Storytelling</li><li>Dedicated Manager</li></ul>
+                    <button class="package-btn secondary" onclick="openModal('contact-modal')">Contact Sales</button>
+                </div>
+            </div>
+            <div class="promo-banner sans"><strong>First 250 customers receive 20% off</strong> all packages. Use code <span class="promo-code">LEGACY20</span> at checkout.</div>
+        </div>
+
+        <div class="tab-content" id="partner-tab">
+            <div class="intro"><h2>Partner With NextHeir</h2><p>Join our network of trusted professionals, vendors, and enterprises</p></div>
+            <div class="partner-grid sans">
+                <div class="partner-card"><div class="partner-icon">🤝</div><div class="partner-title">Become a Vendor</div><div class="partner-desc">Appraisers, photographers, attorneys, and estate professionals</div><button class="primary-btn" onclick="openModal('contact-modal')">Apply Now</button></div>
+                <div class="partner-card"><div class="partner-icon">🏢</div><div class="partner-title">Enterprise Solutions</div><div class="partner-desc">White-label, API access, volume licensing for institutions</div><button class="secondary-btn" onclick="openModal('contact-modal')">Request Demo</button></div>
+                <div class="partner-card"><div class="partner-icon">📈</div><div class="partner-title">Investment</div><div class="partner-desc">Join our journey to preserve the world's legacy</div><button class="secondary-btn" onclick="openModal('contact-modal')">Learn More</button></div>
+            </div>
+            <div class="section-header" style="margin-top: 3rem;"><h2 class="section-title">Trusted by Professionals</h2></div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><div class="testimonial-text">"NextHeir has transformed how I handle estate documentation. My clients love having permanent digital records."</div><div class="testimonial-author">Sarah Chen, Esq.</div><div class="testimonial-role">Estate Planning Attorney</div></div>
+                <div class="testimonial-card"><div class="testimonial-text">"As a luxury jeweler, providing blockchain certificates has become our competitive advantage."</div><div class="testimonial-author">Marcus Delacroix</div><div class="testimonial-role">Fine Jewelry Atelier</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"><p class="footer-text">Every element tells a story. Element United built the system that maps them all—making trust infrastructure.</p></div>
+
+    <div class="modal-overlay" id="login-modal"><div class="modal"><div class="modal-header"><div class="modal-title">Welcome Back</div><button class="modal-close" onclick="closeModal('login-modal')">×</button></div><div class="modal-body"><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@example.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="••••••••"></div></div><div class="modal-footer"><button class="primary-btn" style="width:100%;" onclick="closeModal('login-modal')">Log In</button></div></div></div>
+    <div class="modal-overlay" id="signup-modal"><div class="modal"><div class="modal-header"><div class="modal-title">Start Your Legacy</div><button class="modal-close" onclick="closeModal('signup-modal')">×</button></div><div class="modal-body"><div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@example.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="••••••••"></div></div><div class="modal-footer"><button class="primary-btn" style="width:100%;" onclick="closeModal('signup-modal')">Create Account</button></div></div></div>
+    <div class="modal-overlay" id="contact-modal"><div class="modal"><div class="modal-header"><div class="modal-title">Get in Touch</div><button class="modal-close" onclick="closeModal('contact-modal')">×</button></div><div class="modal-body"><div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@example.com"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="4" placeholder="How can we help?"></textarea></div></div><div class="modal-footer"><button class="primary-btn" style="width:100%;" onclick="closeModal('contact-modal')">Send Message</button></div></div></div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => { b.classList.remove('active'); if (b.dataset.tab === tabName) b.classList.add('active'); });
+        }
+        const metricsData = {
+            family: [{label:'Items Preserved',value:'24',icon:'🏛️'},{label:'Memories Attached',value:'87',icon:'💭'},{label:'Family Members',value:'8',icon:'👨‍👩‍👧‍👦'},{label:'Total Value',value:'$1.2M',icon:'💰'}],
+            attorney: [{label:'Client Estates',value:'45',icon:'📋'},{label:'Assets Documented',value:'892',icon:'📄'},{label:'Active Cases',value:'12',icon:'⚖️'},{label:'Settlement Ready',value:'8',icon:'✅'}],
+            museum: [{label:'Collection Items',value:'3,421',icon:'🏛️'},{label:'Verified Provenance',value:'98%',icon:'✓'},{label:'On Display',value:'287',icon:'🖼️'},{label:'Total Value',value:'$45M',icon:'💎'}],
+            insurance: [{label:'Active Policies',value:'234',icon:'🛡️'},{label:'Verified Assets',value:'1,456',icon:'✓'},{label:'Claims Processed',value:'18',icon:'📋'},{label:'Coverage Total',value:'$12M',icon:'💰'}],
+            brand: [{label:'Products Certified',value:'8,942',icon:'💍'},{label:'Active Certificates',value:'8,129',icon:'📜'},{label:'Customer Trust',value:'4.9/5',icon:'⭐'},{label:'Return Rate',value:'0.3%',icon:'📊'}],
+            wedding: [{label:'Couples Served',value:'347',icon:'💑'},{label:'Gifts Registered',value:'4,289',icon:'🎁'},{label:'Legacy Items',value:'892',icon:'💍'},{label:'Avg. Gift Value',value:'$2,400',icon:'💝'}]
+        };
+        function switchRole(btn, role) {
+            document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('metrics-grid').innerHTML = metricsData[role].map(m => `<div class="metric-card"><div class="metric-icon">${m.icon}</div><div class="metric-label">${m.label}</div><div class="metric-value">${m.value}</div></div>`).join('');
+        }
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); }));
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active')); });
+    </script>
+</body>
+</html>
