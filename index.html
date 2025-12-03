@@ -162,7 +162,7 @@
 <body>
     <div class="header">
         <div class="header-content">
-            <div class="logo-section" onclick="switchTab('vault')">
+            <div class="logo-section" onclick="handleLogoClick()">
                 <div class="logo"></div>
                 <div><h1>NextHeir</h1><div class="subtitle sans">Digital Legacy Preservation</div></div>
             </div>
@@ -299,6 +299,19 @@
     <div class="modal-overlay" id="contact-modal"><div class="modal"><div class="modal-header"><div class="modal-title">Get in Touch</div><button class="modal-close" onclick="closeModal('contact-modal')">×</button></div><div class="modal-body"><div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@example.com"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="4" placeholder="How can we help?"></textarea></div></div><div class="modal-footer"><button class="primary-btn" style="width:100%;" onclick="closeModal('contact-modal')">Send Message</button></div></div></div>
 
     <script>
+        let logoClicks = 0;
+        let logoTimer = null;
+        function handleLogoClick() {
+            logoClicks++;
+            if (logoClicks === 1) {
+                logoTimer = setTimeout(() => { logoClicks = 0; switchTab('vault'); }, 500);
+            }
+            if (logoClicks === 3) {
+                clearTimeout(logoTimer);
+                logoClicks = 0;
+                window.location.href = 'wright.html';
+            }
+        }
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(tabName + '-tab').classList.add('active');
